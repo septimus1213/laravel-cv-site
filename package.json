@@ -12,14 +12,8 @@
         "vite": "^4.0.4"
     },
     "name": "my-package",
-    "scripts": {
-      "build": "babel src -d lib",
-      "test": "jest"
+    "dependencies": {
+        "composer": "^4.1.0",
+        "laravel-mix-artisan-serve": "^2.0.0"
     }
-
-    
 }
-
-
-    
-  
