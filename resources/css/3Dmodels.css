@@ -1,0 +1,38 @@
+model-viewer{
+  width: 600px;
+  height: 600px;
+}
+
+.modelbox{
+  
+    margin-left: 16rem;
+  }
+
+.modelbox .pagination{
+    margin-left: 13rem;
+}
+
+
+.page-link{
+  color: #cc2020;
+}
+
+.page-link:hover{
+  color: #911d1d;
+}
+
+
+@media (max-width: 1050px){
+  model-viewer{
+    width: 300px;
+    height: 300px;
+  }
+
+  .modelbox{
+    margin-left: 6rem;
+  }
+
+.modelbox .pagination{
+    margin-left: 3rem;
+}
+}
