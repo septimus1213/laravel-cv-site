@@ -15,6 +15,5 @@
     "dependencies": {
         "composer": "^4.1.0",
         "laravel-mix-artisan-serve": "^2.0.0"
-    },
-    "version": "0.0.0"
+    }
 }
