@@ -13,8 +13,8 @@
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/3Dmodels.css" rel="stylesheet" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/3Dmodels.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Model-viewer -->
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Krisztián Kiss</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile mx-auto mb-2" src="../assets/img/profile.jpg" alt="..." /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile mx-auto mb-2" src="{{ asset('assets/img/profile.jpg') }}" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -174,8 +174,9 @@
                 <div class="modelbox col-lg-4 col-md-6">
 
                     <?php
-                        require_once "switch.php";
-                        $num = $_POST["num"] ?? 0;
+                        @include('switch.php');
+
+                        $num = $_GET["num"] ?? 0;
                             if($num<0){
                                 $num = 3;
                                 }
@@ -186,17 +187,19 @@
                     ?>
     
                         <div class="modelbox2">
-                        <model-viewer src="../assets/3D Objects/<?php echo $model; ?>" alt="model" disable-zoom auto-rotate camera-controls touch-action="pan-y"></model-viewer>
+                        <model-viewer src="../assets/3D Objects/<?php echo $model?>" alt="model" disable-zoom auto-rotate camera-controls touch-action="pan-y"></model-viewer>
                         </div>
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                             
-                                <form action="welcome.blade.php#models" method="post">
+                                <form action="/#models" method="get">
+                                    {{ csrf_field() }}
                                     <input type="hidden" name="num" value=<?php echo $num - 1;?>>
                                     <h3><li class="page-item"><input class="page-link" type="submit" value="Previous"></li></h3>
                                 </form>
                                 <br>
-                                <form action="welcome.blade.php#models" method="post">
+                                <form action="/#models" method="get">
+                                    {{ csrf_field() }}
                                     <input type="hidden" name="num" value=<?php echo $num + 1;?>>
                                     <h3><li class="page-item"><input class="page-link" type="submit" value="Next"></li></h3>
                                 </form>

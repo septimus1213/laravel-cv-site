@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 function Change($num){
     switch($num){
         case 0:
